@@ -1,5 +1,6 @@
 package luyao.mvptemplate.api;
 
+import io.reactivex.Flowable;
 import io.reactivex.Observable;
 import luyao.mvptemplate.data.FilmData;
 import retrofit2.http.GET;
@@ -13,5 +14,5 @@ import retrofit2.http.GET;
 public interface ApiService {
 
     @GET("v2/movie/in_theaters")
-    Observable<FilmData> getData();
+    Flowable<FilmData> getData();
 }

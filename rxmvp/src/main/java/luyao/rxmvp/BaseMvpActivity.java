@@ -1,52 +1,34 @@
 package luyao.rxmvp;
 
-import android.os.Bundle;
-import android.support.annotation.Nullable;
-import android.support.v7.app.AppCompatActivity;
-
-import butterknife.ButterKnife;
-import io.reactivex.disposables.Disposable;
-import luyao.rxmvp.mvp.BasePresenter;
 import luyao.rxmvp.mvp.BaseView;
+import luyao.rxmvp.mvp.RxPresenter;
 
 /**
  * Created by luyao
  * on 2017/10/17 13:59
  */
 
-public abstract class BaseMvpActivity<P extends BasePresenter> extends AppCompatActivity implements BaseView {
+public abstract class BaseMvpActivity<P extends RxPresenter> extends BaseActivity implements BaseView {
 
     protected P mPresenter;
 
-    @Override
-    protected void onCreate(@Nullable Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(getLayoutResId());
-        ButterKnife.bind(this);
+    protected abstract P createPresenter();
 
-        initView();
+    @Override
+    protected void onViewCreated() {
         if (mPresenter == null)
             mPresenter = createPresenter();
-        initData();
+        mPresenter.attachView(this);
     }
 
     @Override
     protected void onDestroy() {
+        mPresenter.detachView();
         super.onDestroy();
-        mPresenter.unSubscribe();
     }
 
-    protected abstract int getLayoutResId();
-
-    protected abstract P createPresenter();
-
-    protected abstract void initView();
-
-    protected abstract void initData();
-
     @Override
-    public void onRequestStart(Disposable d) {
-        mPresenter.subscribe(d);
+    public void onRequestStart() {
     }
 
     @Override

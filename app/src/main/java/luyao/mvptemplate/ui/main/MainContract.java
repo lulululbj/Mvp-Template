@@ -1,7 +1,7 @@
 package luyao.mvptemplate.ui.main;
 
 import luyao.mvptemplate.data.FilmData;
-import luyao.rxmvp.mvp.BasePresenter;
+import luyao.rxmvp.mvp.RxPresenter;
 import luyao.rxmvp.mvp.BaseView;
 
 
@@ -17,7 +17,7 @@ public interface MainContract {
     }
 
 
-    abstract class Presenter extends BasePresenter<View> {
+    abstract class Presenter extends RxPresenter<View> {
         abstract void getInfo();
     }
 }

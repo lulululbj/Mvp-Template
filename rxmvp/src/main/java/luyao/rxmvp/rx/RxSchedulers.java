@@ -1,6 +1,8 @@
 package luyao.rxmvp.rx;
 
 
+import io.reactivex.Flowable;
+import io.reactivex.FlowableTransformer;
 import io.reactivex.Observable;
 import io.reactivex.ObservableSource;
 import io.reactivex.ObservableTransformer;
@@ -15,11 +17,11 @@ import io.reactivex.schedulers.Schedulers;
 
 public class RxSchedulers {
 
-    public static <T> ObservableTransformer<T, T> switchThread() {
-        return new ObservableTransformer<T, T>() {
+    public static <T> FlowableTransformer<T, T> switchThread() {
+        return new FlowableTransformer<T, T>() {
             @Override
-            public ObservableSource<T> apply(@NonNull Observable<T> upstream) {
-                return upstream.subscribeOn(Schedulers.io())
+            public Flowable<T> apply(Flowable<T> observable) {
+                return observable.subscribeOn(Schedulers.io())
                         .observeOn(AndroidSchedulers.mainThread());
             }
         };

@@ -4,8 +4,6 @@ import android.widget.Toast;
 
 import luyao.mvptemplate.R;
 import luyao.mvptemplate.data.FilmData;
-import luyao.mvptemplate.ui.main.MainContract;
-import luyao.mvptemplate.ui.main.MainPresenter;
 import luyao.rxmvp.BaseMvpActivity;
 
 public class MainActivity extends BaseMvpActivity<MainPresenter> implements MainContract.View {
@@ -22,7 +20,7 @@ public class MainActivity extends BaseMvpActivity<MainPresenter> implements Main
 
     @Override
     protected MainPresenter createPresenter() {
-        return new MainPresenter(this);
+        return new MainPresenter();
     }
 
     @Override

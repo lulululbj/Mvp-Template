@@ -1,7 +1,5 @@
 package luyao.rxmvp.mvp;
 
-import io.reactivex.disposables.Disposable;
-
 /**
  * Created by luyao
  * on 2017/10/16 15:46
@@ -9,7 +7,7 @@ import io.reactivex.disposables.Disposable;
 
 public interface BaseView {
 
-    void onRequestStart(Disposable d);
+    void onRequestStart();
 
     void onRequestError(String msg);
 

@@ -1,4 +1,4 @@
-package luyao.mvptemplate.data;
+package luyao.mvptemplate.model.bean;
 
 import java.util.List;
 
@@ -7,7 +7,7 @@ import java.util.List;
  * on 2017/10/17 13:48
  */
 
-public class FilmData {
+public class FilmBean {
 
 
     /**
@@ -438,7 +438,7 @@ public class FilmData {
 
     @Override
     public String toString() {
-        return "FilmData{" +
+        return "FilmBean{" +
                 "count=" + count +
                 ", start=" + start +
                 ", total=" + total +

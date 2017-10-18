@@ -1,8 +1,7 @@
-package luyao.mvptemplate.api;
+package luyao.mvptemplate.model.api.service;
 
 import io.reactivex.Flowable;
-import io.reactivex.Observable;
-import luyao.mvptemplate.data.FilmData;
+import luyao.mvptemplate.model.bean.FilmBean;
 import retrofit2.http.GET;
 
 
@@ -13,6 +12,8 @@ import retrofit2.http.GET;
 
 public interface ApiService {
 
+     String BASE_URL = "https://api.douban.com/";
+
     @GET("v2/movie/in_theaters")
-    Flowable<FilmData> getData();
+    Flowable<FilmBean> getData();
 }

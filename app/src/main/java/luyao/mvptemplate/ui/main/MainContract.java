@@ -1,6 +1,6 @@
 package luyao.mvptemplate.ui.main;
 
-import luyao.mvptemplate.data.FilmData;
+import luyao.mvptemplate.model.bean.FilmBean;
 import luyao.rxmvp.mvp.RxPresenter;
 import luyao.rxmvp.mvp.BaseView;
 
@@ -13,7 +13,7 @@ import luyao.rxmvp.mvp.BaseView;
 public interface MainContract {
 
     interface View extends BaseView {
-        void getInfo(FilmData info);
+        void getInfo(FilmBean info);
     }
 
 

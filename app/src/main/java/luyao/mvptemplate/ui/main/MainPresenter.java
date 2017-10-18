@@ -1,8 +1,8 @@
 package luyao.mvptemplate.ui.main;
 
 import io.reactivex.disposables.Disposable;
-import luyao.mvptemplate.api.Api;
-import luyao.mvptemplate.data.FilmData;
+import luyao.mvptemplate.model.DataManager;
+import luyao.mvptemplate.model.bean.FilmBean;
 import luyao.rxmvp.rx.BaseSubscriber;
 import luyao.rxmvp.rx.RxSchedulers;
 
@@ -15,12 +15,12 @@ public class MainPresenter extends MainContract.Presenter {
 
     @Override
     public void getInfo() {
-        Disposable d = Api.getInstance().getApiSerVice(Api.BASE_URL)
+        Disposable d = DataManager.getInstance()
                 .getData()
-                .compose(RxSchedulers.<FilmData>switchThread())
-                .subscribeWith(new BaseSubscriber<FilmData>(mView) {
+                .compose(RxSchedulers.<FilmBean>switchThread())
+                .subscribeWith(new BaseSubscriber<FilmBean>(mView) {
                     @Override
-                    public void onNext(FilmData filmData) {
+                    public void onNext(FilmBean filmData) {
                         mView.getInfo(filmData);
                     }
                 });

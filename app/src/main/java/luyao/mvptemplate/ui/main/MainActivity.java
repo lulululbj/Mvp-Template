@@ -3,7 +3,7 @@ package luyao.mvptemplate.ui.main;
 import android.widget.Toast;
 
 import luyao.mvptemplate.R;
-import luyao.mvptemplate.data.FilmData;
+import luyao.mvptemplate.model.bean.FilmBean;
 import luyao.rxmvp.BaseMvpActivity;
 
 public class MainActivity extends BaseMvpActivity<MainPresenter> implements MainContract.View {
@@ -29,7 +29,7 @@ public class MainActivity extends BaseMvpActivity<MainPresenter> implements Main
     }
 
     @Override
-    public void getInfo(FilmData info) {
+    public void getInfo(FilmBean info) {
         Toast.makeText(this, info.toString(), Toast.LENGTH_SHORT).show();
     }
 }

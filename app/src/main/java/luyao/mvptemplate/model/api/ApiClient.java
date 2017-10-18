@@ -1,8 +1,9 @@
-package luyao.mvptemplate.api;
+package luyao.mvptemplate.model.api;
 
 import java.util.concurrent.TimeUnit;
 
 import luyao.mvptemplate.BuildConfig;
+import luyao.mvptemplate.model.api.service.ApiService;
 import okhttp3.OkHttpClient;
 import okhttp3.logging.HttpLoggingInterceptor;
 import retrofit2.Retrofit;
@@ -14,22 +15,22 @@ import retrofit2.converter.gson.GsonConverterFactory;
  * on 2017/10/17 10:17
  */
 
-public class Api {
+public class ApiClient {
 
-    public static String BASE_URL = "https://api.douban.com/";
+
     private static final int TIME_OUT = 5;
-    private static Api api = null;
+    private static ApiClient api = null;
 
 
-    private Api() {
+    private ApiClient() {
 
     }
 
-    public static Api getInstance() {
+    public static ApiClient getInstance() {
         if (api == null) {
-            synchronized (Api.class) {
+            synchronized (ApiClient.class) {
                 if (api == null)
-                    api = new Api();
+                    api = new ApiClient();
             }
         }
         return api;
@@ -50,7 +51,7 @@ public class Api {
     }
 
 
-    private <S> S getService(Class<S> serviceClass, String baseUrl) {
+    public <S> S getService(Class<S> serviceClass, String baseUrl) {
         return new Retrofit.Builder()
                 .client(getHttpClient())
                 .addConverterFactory(GsonConverterFactory.create())
@@ -91,5 +92,7 @@ public class Api {
 //                .observeOn(AndroidSchedulers.mainThread())
 //                .subscribe(s);
 //    }
+
+
 
 }
